@@ -58,6 +58,10 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CorePluginInterfaces, Version=2.0.100.0, Culture=neutral, PublicKeyToken=583bede96b7c94a3, processorArchitecture=MSIL">
       <HintPath>packages\ParatextCorePluginInterfaces.2.0.100\lib\netstandard2.0\CorePluginInterfaces.dll</HintPath>
@@ -162,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="Decryption.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Ptxbuddy.cs" />
     <Compile Include="FrmChatBoxForm.cs">
       <SubType>UserControl</SubType>

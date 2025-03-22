@@ -1,0 +1,2861 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PluginInterfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Paratext.PluginInterfaces.AnnotationStyle">
+            <summary>
+            CSS style information for annotations
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.AnnotationStyle.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name">A style name consisting of alphanumeric characters, hyphens
+            and dashes. (should be one of the names used in <see cref="P:Paratext.PluginInterfaces.IPluginAnnotation.StyleName"/>)</param>
+            <param name="css"><para>Valid CSS formatting specification, for example:</para>
+            <para><c>font-weight: bold; border-left: 1em;</c></para>
+            <para>or</para>
+            <para><c>{ font-weight: bold; border-left: 1em; }</c></para></param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.AnnotationStyle.Name">
+            <summary>
+            A style name (should be one of the names used in <see cref="P:Paratext.PluginInterfaces.IPluginAnnotation.StyleName"/>)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.AnnotationStyle.Css">
+            <summary>
+            Valid CSS formatting specification
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.CommentParagraph">
+            <summary>
+            Object representing a paragraph in a comment
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.CommentParagraph.Spans">
+            <summary>
+            List of formatted text spans that make up the paragraph
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.CommentParagraph.#ctor(System.Collections.Generic.IEnumerable{Paratext.PluginInterfaces.FormattedString})">
+            <summary>
+            Creates a new comment paragraph with the given spans
+            </summary>
+            <param name="spans">The spans that comprise the paragraph</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="spans"/> is null</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.CommentParagraph.#ctor(Paratext.PluginInterfaces.FormattedString[])">
+            <summary>
+            Creates a new comment paragraph with the given spans
+            </summary>
+            <param name="spans">The spans that comprise the paragraph</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="spans"/> is null</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.CommentParagraph.ToString">
+            <summary>
+            Gets the text of the spans
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.WindowType">
+            <summary>
+            Type of window which whose menu hierarchy will be searched for the location
+            when specifying a custom menu location.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.Main">
+            <summary>
+            The Paratext main window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.Scripture">
+            <summary>
+            The Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.Note">
+            <summary>
+            The notes list child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.List">
+            <summary>
+            The list child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.BiblicalTermsTool">
+            <summary>
+            The Biblical Terms tool window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WindowType.BiblicalTermsList">
+            <summary>
+            The Biblical Terms Renderings window
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.CustomMenuLocation">
+            <summary>
+            Specification of a custom menu location for a <see cref="T:Paratext.PluginInterfaces.PluginMenuEntry"/>
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.CustomMenuLocation.#ctor(Paratext.PluginInterfaces.WindowType,System.String[])">
+            <summary>
+            If the path does not resolve to a valid menu location, the <see cref="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.Location"/> will be used as a fallback.
+            </summary>
+            <param name="windowType">Type of window whose menu hierarchy will be searched for the location.</param>
+            <param name="insertAfterMenuHierarchy">Each successive string should be the English menu and/or menu
+            item name that specifies the "path" to the place in the menu hierarchy (of
+            either the main window menu or a child window menu) after which the plugin's
+            menu is to be inserted. For menu items that have ellipses, the ellipses may be omitted.</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.CustomMenuLocation.WindowType">
+            <summary>
+            Type of window whose menu hierarchy will be searched for the location.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.CustomMenuLocation.InsertAfterMenuHierarchy">
+            <summary>
+            If specified, each successive string should be the English menu and/or menu
+            item name that specifies the "path" to the place in the menu hierarchy (of
+            either the main window menu or a child window menu) after which the plugin's
+            menu is to be inserted.
+            ENHANCE: If last path item is the same as the previous item, it will be inserted
+            at the top of that menu instead.
+            </summary>
+            <remarks>For menu items that have ellipses, the ellipses may be omitted.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.Style">
+            <summary>
+            Indicates which styles are applied on a <see cref="T:Paratext.PluginInterfaces.FormattedString"/>.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Style.Plain">
+            <summary>
+            No special formatting
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Style.Bold">
+            <summary>
+            Includes bold formatting
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Style.Italic">
+            <summary>
+            Includes italics formatting
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.FormattedString">
+            <summary>
+            A span of text that has formatting specified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.FormattedString.Text">
+            <summary>
+            The text of the string. Cannot be null or empty.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.FormattedString.Style">
+            <summary>
+            Flags indicating the style
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.FormattedString.Language">
+            <summary>
+            The language in which the text is written. If <c>null</c>, the language is the
+            <see cref="P:Paratext.PluginInterfaces.IComment.Language"/> of the owning comment.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.FormattedString.#ctor(System.String,Paratext.PluginInterfaces.ILanguage,Paratext.PluginInterfaces.Style)">
+            <summary>
+            Creates a string.
+            </summary>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="text"/> is null or empty</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.FormattedString.ToString">
+            <summary>
+            Gets the text of this <see cref="T:Paratext.PluginInterfaces.FormattedString"/>
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IBiblicalTerm">
+            <summary>
+            Object representing a Biblical Term
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTerm.Lemma">
+            <summary>
+            The lemma form of the term in the original (Hebrew or Greek) language
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTerm.Occurrences">
+            <summary>
+            The list of verses where this term occurs
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IBiblicalTerm.Gloss(System.String)">
+            <summary>
+            Gets the gloss of this term in the specified locale
+            </summary>
+            <param name="locale">ISO 639-3 language code with optional RFC 5646 subtags to identify the language
+            in which term glosses are to be returned (will fall back to English (en) if localization in requested language
+            is not available). Null means use the localization currently used in Paratext</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IBiblicalTermList">
+            <summary>
+            A list of biblical terms
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermList.IsAvailable">
+            <summary>
+            Gets whether this biblical term list is available. Most of the time, this should be true,
+            but could be false if the list is for a project that does not exist on the user's machine.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermList.LocalizedName">
+            <summary>
+            Gets the user-friendly name of this biblical term list in the locale currently used in Paratext.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IBiblicalTermRenderings">
+            <summary>
+            An object representing the renderings of a Biblical Term
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermRenderings.TermLemma">
+            <summary>
+            The lemma form of the term these renderings are for in the original (Hebrew or Greek) language
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermRenderings.IsGuess">
+            <summary>
+            True if the returned renderings from the <see cref="P:Paratext.PluginInterfaces.IBiblicalTermRenderings.Renderings"/> property are all guessed by Paratext
+            and have not been user-approved yet.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermRenderings.Renderings">
+            <summary>
+            List of renderings associated with the term. The most frequently
+            occurring rendering will be first.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IBiblicalTermsWindow">
+            <summary>
+            Object representing the (one and only) Biblical Terms tool window.
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IBiblicalTermsWindow.SelectedItemChanged">
+            <summary>
+            Raised when the selected item(s) changes. 
+            </summary>
+            <seealso cref="P:Paratext.PluginInterfaces.IBiblicalTermsWindow.SelectedItems"/>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermsWindow.SelectedItems">
+            <summary>
+            Gets all of the currently selected items
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBiblicalTermsWindow.Project">
+            <summary>
+            The primary project associated with the renderings for the current list of items, if any.
+            If the Biblical Terms window is not open, this returns null.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IBiblicalTermsWindow.Load(Paratext.PluginInterfaces.IProject,Paratext.PluginInterfaces.IBiblicalTerm,Paratext.PluginInterfaces.IBiblicalTermList)">
+            <summary>
+            Shows the Biblical Terms window (only one for all of Paratext) if not already shown and populates
+            it with the list of terms associated with the given project or the specified list.
+            </summary>
+            <param name="project">The project whose renderings will be shown (if <paramref name="listToShow"/> is null, the
+            list of terms associated with this project will be shown).</param>
+            <param name="termToSelect">Optional term to select after loading.</param>
+            <param name="listToShow">Optional list of terms to show.
+            See <see cref="M:Paratext.PluginInterfaces.IPluginHost.GetBiblicalTermList(Paratext.PluginInterfaces.BiblicalTermListType)"/> and <see cref="P:Paratext.PluginInterfaces.IProject.BiblicalTermList"/></param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IBiblicalTermsWindow.LoadFilteredList(Paratext.PluginInterfaces.IProject,System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IBiblicalTerm},Paratext.PluginInterfaces.IBiblicalTermList)">
+            <summary>
+            Shows the Biblical Terms window (only one for all of Paratext) if not already shown and populates
+            it with the list of terms associated with the given project or the specified list.
+            The list will be filtered to display only the specified terms.
+            </summary>
+            <param name="project">The project whose renderings will be shown (if <paramref name="listToShow"/> is null, the
+            list of terms associated with this project will be shown).</param>
+            <param name="termsToInclude">List of terms to include in the filtered display.</param>
+            <param name="listToShow">Optional list of terms to show.
+            See <see cref="M:Paratext.PluginInterfaces.IPluginHost.GetBiblicalTermList(Paratext.PluginInterfaces.BiblicalTermListType)"/> and <see cref="P:Paratext.PluginInterfaces.IProject.BiblicalTermList"/></param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IComment">
+            <summary>
+            An object representing a comment in a project note
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IComment.Contents">
+            <summary>
+            The list of paragraphs making up the contents of this comment.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IComment.Author">
+            <summary>
+            User who authored this comment
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IComment.Created">
+            <summary>
+            Date/time this comment was created
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IComment.Language">
+            <summary>
+            The language used in the comment (except where specified explicitly in a <see cref="T:Paratext.PluginInterfaces.FormattedString"/>).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IComment.AssignedUser">
+            <summary>
+            User to whom a comment is/was assigned.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IDataFileMerger">
+            <summary>
+            An object that can be used to merge plugin data (text).
+            </summary>
+            <remarks>For a standard XML-based merger that uses <see cref="T:Paratext.PluginInterfaces.XMLDataMergeInfo"/>, use
+            <see cref="M:Paratext.PluginInterfaces.IPluginHost.GetXmlMerger(Paratext.PluginInterfaces.XMLDataMergeInfo)"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IDataFileMerger.Merge(System.String,System.String,System.String)">
+            <summary>
+            Requests a three-way merge to be performed for plugin data (text).
+            </summary>
+            <param name="theirs">The data from another user (i.e., obtained by a Send/Receive).
+            If <c>null</c> the other user deleted the data.</param>
+            <param name="mine">the last version of the data saved by the current user.
+            If <c>null</c> the current user deleted the data.</param>
+            <param name="parent">the common parent version
+            If <c>null</c> both users added the data independently with no common parent version.</param>
+            <returns>The result of the merge. If <c>null</c> the data will be deleted.</returns>
+            <exception cref="T:System.Exception">Something went wrong. This will cause the entire send/receive to fail.</exception>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IFont">
+            <summary>
+            Object representing a font
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IFont.FontFamily">
+            <summary>
+            Name of the font family, which represents a group of fonts that have a similar font face.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IFont.Size">
+            <summary>
+            The em-size measured in in points
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IFont.Language">
+            <summary>
+            The language tag needed to tell a Graphite font which set of customized rules to use.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IFont.Features">
+            <summary>
+            A comma-separated list of selected feature options for a Graphite font.
+            REVIEW: Although Paratext does not seem to support selection of features for
+            Open Type fonts, it's possible that existing LDML files may have this
+            information and it could be used by Paratext (and therefore maybe passed on here).
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IKeyboard">
+            <summary>
+            An object representing a system keyboard input method
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IKeyboard.Activate">
+            <summary>
+            Activates the keyboard
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ILanguage">
+            <summary>
+            An object representing a language definition
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ILanguage.Id">
+            <summary>
+            Gets the IETF BCP-47 language tag.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ILanguage.Font">
+            <summary>
+            Gets the default font.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ILanguage.IsRtoL">
+            <summary>
+            Gets whether the language is displayed right-to-left.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.Justification">
+            <summary>
+            Justification of a paragraph
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Justification.Left">
+            <summary>
+            Text is justified to the left side of the view
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Justification.Center">
+            <summary>
+            Text is centered in the view
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Justification.Right">
+            <summary>
+            Text is justified to the right side of the view
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.Justification.Both">
+            <summary>
+            Text is stretched to both sides of the view
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IMarkerInfo">
+            <summary>
+            Base interface for marker information
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IMarkerInfo.Name">
+            <summary>
+            The name of the marker/style
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IMarkerInfo.Marker">
+            <summary>
+            The marker (without the leading backslash or trailing space)
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IStyledMarkerInfo">
+            <summary>
+            Base interface for markers that contain styling information
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.FontFamily">
+            <summary>
+            Font to use or null if using the default for the language
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.FontSize">
+            <summary>
+            Font size to use or null if using the default for the language
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Color">
+            <summary>
+            Color of the text or null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Bold">
+            <summary>
+            Specifies whether bold formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Italic">
+            <summary>
+            Specifies whether italics formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Superscript">
+            <summary>
+            Specifies whether superscript formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Subscript">
+            <summary>
+            Specifies whether subscript formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.Underline">
+            <summary>
+            Specifies whether underline formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IStyledMarkerInfo.SmallCaps">
+            <summary>
+            Specifies whether small-cap formatting should be on or off. Null if unspecified.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ICharacterMarkerInfo">
+            <summary>
+            Object representing the information for a character style marker
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ICharacterMarkerInfo.EndMarker">
+            <summary>
+            The end marker (without the leading backslash or trailing asterisk)
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.INoteMarkerInfo">
+            <summary>
+            Object representing the information for a footnote or cross reference style marker
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IParagraphMarkerInfo">
+            <summary>
+            Object representing the information for a paragraph style marker
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.Justification">
+            <summary>
+            Specifies the type of justification applied or null if unspecified.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.FirstLineIndent">
+            <summary>
+            Specifies the first line indent (in inches) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.LeftMargin">
+            <summary>
+            Specifies the left margin (in inches) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.RightMargin">
+            <summary>
+            Specifies the right margin (in inches) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.SpaceBefore">
+            <summary>
+            Specifies the space before (in points) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.SpaceAfter">
+            <summary>
+            Specifies the space after (in points) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParagraphMarkerInfo.LineSpacing">
+            <summary>
+            Specifies the line spacing (in percentage of the font height) applied or null if unspecified
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IParatextChildState">
+            <summary>
+            A snapshot of the state of a child window in Paratext
+            </summary>
+            <remarks>Since this is a snapshot, the properties on this object will not
+            be updated when the values they represent change.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextChildState.Project">
+            <summary>
+            The Paratext project associated with the child window
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextChildState.VerseRef">
+            <summary>
+            The verse reference selected for the child window
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextChildState.SyncReferenceGroup">
+            <summary>
+            The reference group to which the child window belongs
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextChildState.Selections">
+            <summary>
+            A list of objects representing the selected data/text inside the child window.
+            The exact number and type(s) of information will vary depending on the type of
+            window.
+            Can be an empty list if there is nothing selected. Can be null if we don't know
+            how to provide meaningful selection information for the child window.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IParatextScrTextAnnotationPlugin">
+            <summary>
+            Interface for plugins that want to create annotations to show in the
+            Scripture text child window.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextScrTextAnnotationPlugin.PluginAnnotationMenuEntries">
+            <summary>
+            List of menu entries that will show or hide a set of annotations
+            </summary>
+            <seealso cref="T:Paratext.PluginInterfaces.PluginAnnotationMenuEntry"/>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IParatextStandalonePlugin">
+            <summary>
+            Interface for plugins that run when a menu item is clicked and that have
+            no UI or have stand-alone UI (not embedded in Paratext's windowing framework).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IParatextStandalonePlugin.PluginMenuEntries">
+            <summary>
+            List fo menu items to create for this plugin
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IParatextStartupAutomaticPlugin">
+            <summary>
+            Interface for plugins that run when Paratext is first starting up (before the Main Window is shown).
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IParatextStartupAutomaticPlugin.Run(Paratext.PluginInterfaces.IPluginHost)">
+            <summary>
+            Method that the host will call when Paratext first starts up.
+            </summary>
+            <param name="host">The plugin host</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.MouseButton">
+            <summary>
+            Represents the buttons on a mouse
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MouseButton.Left">
+            <summary>
+            The primary mouse button. Usually (for right-handed users) this is
+            the left (physically) button.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MouseButton.Right">
+            <summary>
+            The secondary mouse button. Usually (for right-handed users) this is
+            the right (physically) button.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MouseButton.Middle">
+            <summary>
+            The middle mouse button.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IPluginAnnotation">
+            <summary>
+            An object representing an annotation shown in the scripture text
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginAnnotation.ScriptureSelection">
+            <summary>
+            Selection on which the annotation is attached. Note: Annotations may not cross verse boundaries.
+            </summary>
+            <remarks>Plugins can create their own implementations of IScriptureTextSelection or use
+            <see cref="M:Paratext.PluginInterfaces.IProject.FindMatchingScriptureSelections(Paratext.PluginInterfaces.IVerseRef,System.String,System.String,System.Boolean,System.Boolean)"/> to get selections for a verse.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginAnnotation.StyleName">
+            <summary>
+            Style of the annotation (e.g. error, warning, keyword, comment). This must match
+            the name specified in <see cref="P:Paratext.PluginInterfaces.AnnotationStyle.Name"/>.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginAnnotation.Icon">
+            <summary>
+            The file path to an image to display before annotation. Path can be relative to the plugin folder. Null for none.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginAnnotation.Click(Paratext.PluginInterfaces.MouseButton,System.Boolean,System.Drawing.Point)">
+            <summary>
+            Called when a click is performed on an annotation
+            </summary>
+            <param name="button">button that was pressed</param>
+            <param name="onIcon">true if click was on icon, not text</param>
+            <param name="location">location on screen where click occurred</param>
+            <returns>True if the click was handled</returns>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginAnnotation.IconToolTipText">
+            <summary>
+            The text to display as a tooltip when hovering over the icon.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IPluginAnnotationSource">
+            <summary>
+            A source of annotations for a particular project
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IPluginAnnotationSource.AnnotationsChanged">
+            <summary>
+            Raised when annotations are changed.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginAnnotationSource.GetAnnotations(Paratext.PluginInterfaces.IVerseRef,System.String)">
+            <summary>
+            Gets all annotations for the specified reference.
+            </summary>
+            <param name="verseRef">verse reference to find annotations for</param>
+            <param name="verseUsfm">usfm of verse to annotate</param>
+            <returns>all annotations for the verse</returns>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginAnnotationSource.GetStyleInfo(System.Double)">
+            <summary>
+            Gets extra CSS definitions. The style names of the returned objects should correspond to
+            the names used in <see cref="P:Paratext.PluginInterfaces.IPluginAnnotation.StyleName"/>.
+            </summary>
+            <param name="zoom">The current zoom value (where 1.0 represents 100%)</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginAnnotationSource.MaintainSelectionsOnWordBoundaries">
+            <summary>
+            Indicates whether selections should stay on word boundaries. That is, if the original selection
+            was on word boundaries then context matching should only return selections on word boundaries.
+            </summary>
+            <returns>true to keep selections on word boundaries</returns>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IPluginErrorHandler">
+            <summary>
+            Optional interface to be implemented by Paratext plugins that want to
+            be able to report information about unhandled exceptions caused by the
+            plugin. If a plugin does not implement this interface, Paratext will
+            inform the user that the plugin caused the exception but will not be
+            able to tell them how to report the problem or get support.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginErrorHandler.ReportUnhandledException(System.Exception)">
+            <summary>
+            Callback to the plugin to request that an unhandled exception caused by the
+            plugin be reported to the user. 
+            </summary>
+            <param name="exception">The unhandled exception that was thrown by the plugin
+            or by Paratext in response to an invalid method call from the plugin.</param>
+            <returns><c>true</c> if the plugin reported the exception; <c>false</c> to have
+            Paratext report the problem using its default reporting mechanism.</returns>
+            <remarks>Any exceptions thrown during the invocation of this method will be
+            ignored.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.SyncReferenceGroup">
+            <summary>
+            Reference synchronization group
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.None">
+            <summary>No group</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.A">
+            <summary>Group A</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.B">
+            <summary>Group B</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.C">
+            <summary>Group C</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.D">
+            <summary>Group D</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SyncReferenceGroup.E">
+            <summary>Group E</summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.BiblicalTermListType">
+            <summary>
+            Type of Biblical Terms list
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BiblicalTermListType.Major">
+            <summary>
+            The most commonly used Biblical terms
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BiblicalTermListType.All">
+            <summary>
+            The entire list of Biblical terms
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.OpenWindowBehavior">
+            <summary>
+            The behavior of opening a project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.OpenWindowBehavior.QuickReference">
+            <summary>
+            Opens the window as a quick reference window.
+            A quick reference window is opened without a scroll group, and is a floating window.
+            The project will replace the current project in the window if the quick reference window is opened.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.OpenWindowBehavior.UseExisting">
+            <summary>
+            If the project is currently opened in a window, that window will be active.
+            If the project is not opened, a new window will be opened.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.OpenWindowBehavior.ForceNew">
+            <summary>
+            Always open a new window for the project.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.SLTProject">
+            <summary>
+            Represents projects that can be opened by the source language tools
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ReferenceChangedHandler">
+            <summary>
+            Handler for handling when a reference of a reference group changes in Paratext
+            </summary>
+            <param name="sender">The plugin host</param>
+            <param name="newReference">The new reference the reference group is now set to</param>
+            <param name="group">The reference group that changed reference</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.WindowSelectionChangedHandler">
+            <summary>
+            Handler for handling the selection of a child window changing
+            </summary>
+            <param name="sender">The plugin host</param>
+            <param name="activeWindowState">The new state of the child window</param>
+            <param name="currentSelections">A list of selections in the view (typically only one)</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IPluginHost">
+            <summary>
+            Provides application-level interaction with Paratext.
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IPluginHost.ShuttingDown">
+            <summary>
+            Raised when Paratext starts shutting down
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IPluginHost.VerseRefChanged">
+            <summary>
+            Raised when the Scripture reference is changed.
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IPluginHost.ActiveWindowSelectionChanged">
+            <summary>
+            Raised when the active window and/or the selection in that window is changed
+            </summary>
+            <remarks>Note that the currentSelections is passed for convenience; it is always
+            the same object as returned by the <see cref="P:Paratext.PluginInterfaces.IParatextChildState.Selections"/>
+            property of the <see cref="P:Paratext.PluginInterfaces.IPluginHost.ActiveWindowState"/></remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.ApplicationName">
+            <summary>
+            Gets the host application name.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.ApplicationVersion">
+            <summary>
+            Gets the version of the host application
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.UserInfo">
+            <summary>
+            Gets an object representing the current user
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.UserSettings">
+            <summary>
+            The per-user settings currently in effect
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.ActiveWindowState">
+            <summary>
+            State of the active Paratext child window. Null if no child window is active.
+            </summary>
+            <remarks>During Paratext startup, the state of the active window might be undefined. Therefore,
+            plugins should avoid accessing this property in EmbeddedPluginControl.OnAddedToParent.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.DefaultKeyboard">
+            <summary>
+            Gets the default keyboard for the system default input language.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.ReferenceList">
+            <summary>
+            Gets an object representing the (one and only) list of references.
+            </summary>
+            <remarks>Even if the list window is not showing in Paratext, this will return a valid object.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.BiblicalTermsWindow">
+            <summary>
+            Gets an object representing the (one and only) Biblical Terms tool window.
+            </summary>
+            <remarks>Even if the Biblical Terms tool window is not showing in Paratext, this will return a
+            valid object.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IPluginHost.AllResources">
+            <summary>
+            Get all of the resource projects on the user's machine
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.PutPluginData(Paratext.PluginInterfaces.IPluginObject,System.String,System.Action{System.IO.TextWriter})">
+            <summary>
+            Requests Paratext to obtain a text writer and call back to the plugin so it can use
+            it to write project-agnostic data (will not be Sent/Received by any project).
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <param name="writeData">A callback supplying a <see cref="T:System.IO.TextWriter"/> that the plugin
+            should use to write the data.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetPluginData(Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Gets a text reader that the plugin can use to read project-agnostic data.
+            The plugin is responsible for closing the reader.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The reader containing the data, or null if it did not exist</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetPluginDataModifiedTime(Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Gets the date/time when the specified project-agnostic data was last modified.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The date/time when the data was last modified</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.DeletePluginData(Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Removes project-agnostic data.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetXmlMerger(Paratext.PluginInterfaces.XMLDataMergeInfo)">
+            <summary>
+            Gets a standard XML-based merger that uses <see cref="T:Paratext.PluginInterfaces.XMLDataMergeInfo"/>.
+            </summary>
+            <param name="mergeInfo">The merge information</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="mergeInfo"/> is null.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.SetReferenceForSyncGroup(Paratext.PluginInterfaces.IVerseRef,Paratext.PluginInterfaces.SyncReferenceGroup)">
+            <summary>
+            Sets the Scripture reference for the specified synchronized reference group (i.e., a "scroll group" in Paratext).
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetStandardVersification(Paratext.PluginInterfaces.StandardScrVersType)">
+            <summary>
+            Gets the requested standard versification.
+            </summary>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="type"/> is <see cref="F:Paratext.PluginInterfaces.StandardScrVersType.Unknown"/></exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetBiblicalTermList(Paratext.PluginInterfaces.BiblicalTermListType)">
+            <summary>
+            Gets the requested list of biblical terms.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.Log(Paratext.PluginInterfaces.IPluginObject,System.String,System.Object[])">
+            <summary>
+            Writes the given string to the host's log file as an error
+            (tagged with the plugin's ID to identify the source of the logged info).
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="logFormatStr">The string to log. May be a standard .Net format string.</param>
+            <param name="formatArguments">Optional parameters for the format string.</param>
+            <remarks>The log is not guaranteed to be written to disk immediately. If you need to ensure that
+            the contents are written to disk, call <see cref="M:Paratext.PluginInterfaces.IPluginHost.FlushLog"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.FlushLog">
+            <summary>
+            Forces any outstanding writes to the log file to be flushed to disk.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.GetAllProjects">
+            <summary>
+            Get all of the non resource projects on the user's machine
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.OpenTextWindowFor(Paratext.PluginInterfaces.IReadOnlyProject,Paratext.PluginInterfaces.OpenWindowBehavior,Paratext.PluginInterfaces.IVerseRef)">
+            <summary>
+            Open a window in Paratext for a text project
+            </summary>
+            <param name="project">The project to open a window for</param>
+            <param name="behavior">The desired behavior for opening the window</param>
+            <param name="verseRef">The reference to show when opening the project</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.OpenDictionaryWindowFor(Paratext.PluginInterfaces.IReadOnlyProject,Paratext.PluginInterfaces.OpenWindowBehavior,System.String)">
+            <summary>
+            Open a window in Paratext for a dictionary project
+            </summary>
+            <param name="project">The project to open a window for</param>
+            <param name="behavior">The desired behavior for opening the window</param>
+            <param name="dictionaryEntry">The dictionary entry to show when opening the project</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IPluginHost.OpenSLTWindowFor(Paratext.PluginInterfaces.SLTProject,Paratext.PluginInterfaces.OpenWindowBehavior,Paratext.PluginInterfaces.IVerseRef,System.Int32)">
+            <summary>
+            Open a window in Paratext for a dictionary project
+            </summary>
+            <param name="project">The project to open a window for</param>
+            <param name="behavior">The desired behavior for opening the window</param>
+            <param name="verseRef">The reference to show when opening the project</param>
+            <param name="wordToSelect">the word to select in the verse reference.  -1 will select the beginning of the verse</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IPluginObject">
+            <summary>
+            An object owned by the plugin that can be used to uniquely identify the plugin.
+            For convenience, all <see cref="T:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin"/> and EmbeddedPluginControl objects
+            implement this interface. A plugin can also implement this on any other object if it wants to.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IProgressInfo">
+            <summary>
+            An object representing a visible progress indicator.
+            </summary>
+            <remarks>When a plugin callback includes an <see cref="T:Paratext.PluginInterfaces.IProgressInfo"/> parameter, the
+            callback will be run in a separate thread.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProgressInfo.CancelRequested">
+            <summary>
+            Gets whether the user has requested to cancel the operation.
+            </summary>
+            <remarks>If this happens, Paratext may end the thread in which the plugin work is being
+            done after waiting 1 second. So the plugin should check this regularly and respond in a
+            timely fashion if any action is necessary.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProgressInfo.Initialize(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes the progress object. <see cref="P:Paratext.PluginInterfaces.IProgressInfo.Value"/> will be set to <paramref name="minValue"/>.
+            </summary>
+            <param name="message">A (localized) message indicating the current operation. Keep it short!</param>
+            <param name="maxValue">The value representing completion of the task.</param>
+            <param name="minValue">The value representing the start of the task.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">maxValue is less than or equal to minValue</exception>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProgressInfo.Message">
+            <summary>
+            Sets a (localized) message indicating the current operation. Keep it short!
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProgressInfo.Value">
+            <summary>
+            Gets or sets the current value representing the progress of the task.
+            </summary>
+            <remarks>
+            If a value is given which is less than the minValue specified in
+            <see cref="M:Paratext.PluginInterfaces.IProgressInfo.Initialize(System.String,System.Int32,System.Int32)"/>, the value will be set to that minValue.
+            If a value is given which is greater than the maxValue specified in
+            <see cref="M:Paratext.PluginInterfaces.IProgressInfo.Initialize(System.String,System.Int32,System.Int32)"/>, the value will be set to that maxValue.
+            </remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.DataType">
+            <summary>
+            Type of data associated with a permission
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.PluginData">
+            <summary>Permission for the ability to edit data from a plugin for a project</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.SpellingStatus">
+            <summary>Permission for the ability to edit the spelling status of words</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.TermRenderings">
+            <summary>Permission for the ability to edit the biblical term renderings</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.TermsList">
+            <summary>Permission for the ability to edit the Project Biblical Terms list</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.ParallelPassageStatus">
+            <summary>Permission for the ability to approve Parallel Passage status</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.DataType.ProjectProgress">
+            <summary>Permission for the ability to update Project Progress</summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.BookNameType">
+            <summary>
+            The type of book name selection
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BookNameType.Abbreviation">
+            <summary>The abbreviation form</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BookNameType.ShortName">
+            <summary>The abbreviation form</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BookNameType.LongName">
+            <summary>The abbreviation form</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BookNameType.CrossReferencesForm">
+            <summary>
+            The form of book names used when formatting cross references (\xt)
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.BookNameType.ParallelPassagesForm">
+            <summary>
+            The form of book names used when formatting parallel passage references, figures, etc.
+            (\r, \mr, \sr, \rq, \ior, \fig)
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.USFMVersion">
+            <summary>
+            The version of USFM.
+            </summary>
+            <remarks>This enumeration can grow, so plugins should handle the "default" case</remarks>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.USFMVersion.V2_5">
+            <summary>
+            2.5
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.USFMVersion.V3_0">
+            <summary>
+            3.0
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.USXVersion">
+            <summary>
+            USX version
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.USXVersion.V3_0">
+            <summary>
+            3.0
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.USXVersion.V3_x">
+            <summary>
+            The latest version of 3 (currently 3.0)
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.USXVersion.Latest">
+            <summary>
+            The latest version of USX (currently 3.0)
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ProjectDataChangeType">
+            <summary>
+            The type of data that was changed
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.WholeProject">
+            <summary>
+            Catastrophic update involving a big chunk of the project (e.g. a send/receive or language setting change)
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingVersification">
+            <summary>
+            The versification setting for the project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingLanguageName">
+            <summary>
+            The language name
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingBaseProject">
+            <summary>
+            The base project (for derived project types)
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingVernacularKeyboard">
+            <summary>
+            The vernacular keyboard used by the project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingNotesKeyboard">
+            <summary>
+            The notes keyboard used by the project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.SettingUSFMVersion">
+            <summary>
+            The USFM version used by the project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.DataBiblicalTerms">
+            <summary>
+            The Project Biblical Terms changed or a different list of terms for the project was selected
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.DataBiblicalTermsRenderings">
+            <summary>
+            The Biblical Term renderings
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectDataChangeType.DataNotes">
+            <summary>
+            The project notes
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.WriteLockScope">
+            <summary>
+            Scope of a requested write lock
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WriteLockScope.ProjectNotes">
+            <summary>
+            Covers all of the projects notes for a project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.WriteLockScope.BiblicalTermsRenderings">
+            <summary>
+            Covers the Biblical Term renderings for a project
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ScriptureDataChangedHandler">
+            <summary>
+            Handler for handling Scripture text changes
+            </summary>
+            <param name="sender">The project that changed</param>
+            <param name="bookNum">The book number or zero if the content of multiple books changed</param>
+            <param name="chapterNum">The chapter number or zero if the content of multiple chapters changed</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ProjectDataChangedHandler">
+            <summary>
+            Handler for handling project data changes
+            </summary>
+            <param name="sender">The project that changed</param>
+            <param name="details">The type of data that changed</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IProject">
+            <summary>
+            A non-resource Paratext project 
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IProject.ScriptureDataChanged">
+            <summary>
+            Raised when the Project's Scripture content is changed.
+            </summary>
+            <remarks>The book number will be zero if the content of multiple books changed.
+            The chapter number will be zero if the content of multiple chapters changed.</remarks>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IProject.ProjectDataChanged">
+            <summary>
+            Raised when a Project setting or other data is changed.
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IProject.ProjectDeleted">
+            <summary>
+            Raised when the project is deleted
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.Versification">
+            <summary>
+            Gets the versification used by the project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.BaseProject">
+            <summary>
+            Gets the base project; or null, if not based on another project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.VernacularKeyboard">
+            <summary>
+            Gets the default vernacular keyboard. Can be null.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.NotesKeyboard">
+            <summary>
+            Gets the "notes" keyboard (i.e., the keyboard for the default language used to
+            write project notes. Often a LWC). Can be null.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.AvailableBooks">
+            <summary>
+            Gets the books that are available in the project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.NonObserverUsers">
+            <summary>
+            Gets the users who have a non-Observer role on the project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.AvailableNotesLanguages">
+            <summary>
+            Gets all the languages available to be used when creating notes for this project.
+            </summary>
+            <remarks>This includes any that are defined in the project plus any others defined (locally)
+            in Paratext.
+            </remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.ScriptureMarkerInformation">
+            <summary>
+            Gets information about all the markers defined for Scripture books in this project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.FrontBackMarkerInformation">
+            <summary>
+            Gets information about all the markers defined for front and back matter in this project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.USFMVersion">
+            <summary>
+            The version of USFM used by the project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProject.BiblicalTermList">
+            <summary>
+            Gets the list of biblical terms associated with this project.
+            </summary>
+            <remarks>If enumerating the terms, caller should subscribe to <see cref="E:Paratext.PluginInterfaces.IProject.ProjectDataChanged"/>, so that if
+            <see cref="F:Paratext.PluginInterfaces.ProjectDataChangeType.DataBiblicalTerms"/> changes, it does not continue enumerating them.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.NormalizeText(System.String)">
+            <summary>
+            Normalizes the text according to the project settings (either Unicode composed or decomposed form).
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetFormattedReference(Paratext.PluginInterfaces.IVerseRef,Paratext.PluginInterfaces.BookNameType)">
+            <summary>
+            Creates a string from the given verse reference formatted as specified in the project reference settings.
+            </summary>
+            <param name="reference">The reference to format</param>
+            <param name="nameType">What form of the book name to use.</param>
+            <returns>The formatted reference, or null if either none of the book names for
+            the book have been set or if the reference settings have not been defined.</returns>
+            <remarks>If the requested name type has not been set, the next best name will be used.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.FindMatchingScriptureSelections(Paratext.PluginInterfaces.IVerseRef,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Gets a selection for each occurrence of the specified text in the verse.
+            </summary>
+            <param name="reference">The reference of the verse in which to search (and which will be used for any
+            results returned)</param>
+            <param name="selectedText">The text to search for. The match will be case insensitive unless
+            <paramref name="treatAsRegex"/> is <c>true</c>.</param>
+            <param name="verseUsfm">Optional USFM representing the text of the verse (which may represent an edited
+            form of the text that has not yet been saved). Typically, this would come from the parameter passed to
+            <see cref="M:Paratext.PluginInterfaces.IPluginAnnotationSource.GetAnnotations(Paratext.PluginInterfaces.IVerseRef,System.String)"/>.</param>
+            <param name="wholeWord">Flag indicating whether to consider only whole-word matches.</param>
+            <param name="treatAsRegex">Flag indicating whether to treat <paramref name="selectedText"/> as a regular expression.</param>
+            <returns>A list of 0 or more matching selections. (Will not be null.)</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="verseUsfm"/> contains USFM for verse(s)
+            that do not correspond to the verse of the given <paramref name="reference"/>, <paramref name="reference"/> is null or
+            invalid, or <paramref name="selectedText"/> is <c>null</c> or empty.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetScriptureSelectionForVerse(Paratext.PluginInterfaces.IVerseRef,System.String)">
+            <summary>
+            Gets a selection for the verse.
+            </summary>
+            <param name="reference">The reference of the verse </param>
+            <param name="verseUsfm">Optional USFM representing the text of the verse (which may represent an edited
+            form of the text that has not yet been saved). Typically, this would come from the parameter passed to
+            <see cref="M:Paratext.PluginInterfaces.IPluginAnnotationSource.GetAnnotations(Paratext.PluginInterfaces.IVerseRef,System.String)"/>.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="verseUsfm"/> contains USFM for verse(s)
+            that do not correspond to the verse of the given <paramref name="reference"/> or <paramref name="reference"/>
+            is null or invalid.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetUSX(System.Int32,System.Boolean,Paratext.PluginInterfaces.USXVersion)">
+            <summary>
+            Gets the data for the specified book as USX.
+            </summary>
+            <param name="bookNum">The book number</param>
+            <param name="strict">Flag indicating whether to return only USX that passes strict
+            schema validation. If the data is not in a condition to be able to produce compliant
+            USX and this flag is set, a <see cref="T:Paratext.PluginInterfaces.ParatextPluginException"/> will be thrown.</param>
+            <param name="version">Desired USX version</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">The <paramref name="strict"/> flag was
+            set and the data is not in a condition to be able to produce valid USX.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetUSFM(System.Int32,System.Int32)">
+            <summary>
+            Gets the "raw" USFM data (in the version specified by <see cref="P:Paratext.PluginInterfaces.IProject.USFMVersion"/>).
+            </summary>
+            <param name="bookNum">The book number</param>
+            <param name="chapterNum">The chapter number. Zero to get the whole book</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetUSFMTokens(System.Int32,System.Int32)">
+            <summary>
+            Gets the USFM in a form that is easier to parse.
+            </summary>
+            <param name="bookNum">The book number</param>
+            <param name="chapterNum">The chapter number. Zero to get the whole book</param>
+            <remarks>Even if the project has its USFM data stored in an older version of USFM,
+            the tokens returned will reflect the current internal version of USFM used by
+            Paratext. (For example, information about figures will always be returned as
+            attributes.)</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetPluginData(Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Gets a text reader that the plugin can use to read project-specific data.
+            The plugin is responsible for closing the reader.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The reader containing the data, or null if it did not exist</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetPluginDataModifiedTime(Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Gets the date/time when the specified project-specific data was last modified.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The date/time when the data was last modified</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetNotes(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets project notes.
+            </summary>
+            <param name="bookNum">The book number. Zero to get the notes for the entire project.</param>
+            <param name="chapterNum">The chapter number. Zero to get the notes for the whole book.</param>
+            <param name="unresolvedOnly">True to only return notes that are unresolved.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Invalid parameters</exception>
+            <remarks>This does not include conflict notes, spelling notes, consultant notes,
+            term rendering notes, etc.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.AddNote(Paratext.PluginInterfaces.IWriteLock,Paratext.PluginInterfaces.IScriptureTextSelection,System.Collections.Generic.IEnumerable{Paratext.PluginInterfaces.CommentParagraph},Paratext.PluginInterfaces.ILanguage,Paratext.PluginInterfaces.IUserInfo)">
+            <summary>
+            Adds a project note
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},Paratext.PluginInterfaces.WriteLockScope)"/> with a scope of
+            <see cref="F:Paratext.PluginInterfaces.WriteLockScope.ProjectNotes"/></param>
+            <param name="anchor">A selection in the Scripture text representing the "anchor" location of the note.
+            Note that the <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.SelectedText"/> is expected to begin and end at a word
+            break; Paratext will attempt to expand the selection if it is not.</param>
+            <param name="contentParagraphs">One or more paragraphs of formatted text</param>
+            <param name="language">The default language used in <paramref name="contentParagraphs"/> (except
+            where specified explicitly in a <see cref="T:Paratext.PluginInterfaces.FormattedString"/>).</param>
+            <param name="assignedUser">User (if any) to whom the new note is to be assigned.</param>
+            <returns>The newly added note</returns>
+            <remarks>Plugins can create their own implementations of IScriptureTextSelection or use
+            <see cref="M:Paratext.PluginInterfaces.IProject.FindMatchingScriptureSelections(Paratext.PluginInterfaces.IVerseRef,System.String,System.String,System.Boolean,System.Boolean)"/> to get selections to pass as the <paramref name="anchor"/>
+            for a new note.</remarks>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Start and end reference are different, selected text includes a
+            marker, content paragraphs collection is null or empty, or contains a null paragraph.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)">
+            <summary>
+            Requests a write lock for the specified scripture data.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="releaseRequested">Delegate to call when some other task requests a lock that
+            overlaps with the lock granted as a result of this request. Plugin should normally release the lock
+            in response to this.</param>
+            <param name="bookNum">The book number. Zero to lock the entire project text.</param>
+            <param name="chapterNum">The chapter number. Zero to lock the whole book.</param>
+            <returns>The requested lock or null if not available.</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <remarks>An appropriate lock should be obtained before calling <see cref="M:Paratext.PluginInterfaces.IProject.PutUSFM(Paratext.PluginInterfaces.IWriteLock,System.String,System.Int32)"/>,
+            <see cref="M:Paratext.PluginInterfaces.IProject.PutUSFMTokens(Paratext.PluginInterfaces.IWriteLock,System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IUSFMToken},System.Int32)"/>, or <see cref="M:Paratext.PluginInterfaces.IProject.PutUSX(Paratext.PluginInterfaces.IWriteLock,System.String,System.Boolean)"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)">
+            <summary>
+            Requests a write lock for the specified plugin data.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="releaseRequested">Delegate to call when some other task requests a lock that
+            overlaps with the lock granted as a result of this request. Plugin should normally release the lock
+            in response to this.</param>
+            <param name="pluginDataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The requested lock or null if not available.</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <remarks>An appropriate lock should be obtained before calling <see cref="M:Paratext.PluginInterfaces.IProject.PutPluginData(Paratext.PluginInterfaces.IWriteLock,Paratext.PluginInterfaces.IPluginObject,System.String,System.Action{System.IO.TextWriter})"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},Paratext.PluginInterfaces.WriteLockScope)">
+            <summary>
+            Requests a write lock for the specified scope.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="releaseRequested">Delegate to call when some other task requests a lock that
+            overlaps with the lock granted as a result of this request. Plugin should normally release the lock
+            in response to this.</param>
+            <param name="lockScope">The scope of the lock.</param>
+            <returns>The requested lock or null if not available.</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.MakeHistoryPoint(System.String,System.Boolean)">
+            <summary>
+            Creates a new project history point with the specified message.
+            </summary>
+            <param name="message">The message to display for the history point.</param>
+            <param name="force">True to force the creation of the history point even if nothing has changed.</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.PutUSX(Paratext.PluginInterfaces.IWriteLock,System.String,System.Boolean)">
+            <summary>
+            Requests Paratext to write (and overwrite if existing) data for the book
+            represented by the given USX data.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)"/></param>
+            <param name="usxData">The data to put</param>
+            <param name="strict">Flag indicating whether to accept only USX that passes strict
+            schema validation.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data (ill-formed XML,
+            version incompatible, etc.), the lock does not cover the entire book, or the user
+            does not have permission to write the given book (all chapters).</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.PutUSFM(Paratext.PluginInterfaces.IWriteLock,System.String,System.Int32)">
+            <summary>
+            Requests Paratext to write (and overwrite if existing) data for a chapter or book
+            represented by the given USFM data.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)"/></param>
+            <param name="usfmData">Data representing either a single chapter in the given book or the
+            entire book. If replacing an entire book, the given data must have content for all existing
+            chapters. If the data is in a USFM version later than the version returned by
+            <see cref="P:Paratext.PluginInterfaces.IProject.USFMVersion"/>, some loss of data may occur.</param>
+            <param name="bookNum">The book number</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data, the lock does not cover the
+            needed scope, or the user does not have permission to write the given project data.</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.PutUSFMTokens(Paratext.PluginInterfaces.IWriteLock,System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IUSFMToken},System.Int32)">
+            <summary>
+            Requests Paratext to write (and overwrite if existing) data for a chapter or book
+            represented by the given USFM tokens.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)"/></param>
+            <param name="tokens">The USFM tokens representing either a single chapter in the given book or
+            the entire book. If replacing an entire book, the given data must have content for all existing
+            chapters. 
+            Each token must be one of the three standard derived types of <see cref="T:Paratext.PluginInterfaces.IUSFMToken"/>:
+            <list type="bullet">
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMMarkerToken"/></description></item>
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMTextToken"/></description></item>
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMAttributeToken"/></description></item>
+            </list>
+            </param>
+            <param name="bookNum">The book number</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data, the lock does not cover the
+            needed scope, or the user does not have permission to write the given project data.</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.PutPluginData(Paratext.PluginInterfaces.IWriteLock,Paratext.PluginInterfaces.IPluginObject,System.String,System.Action{System.IO.TextWriter})">
+            <summary>
+            Requests Paratext to obtain a text writer and call back to the plugin so it can use
+            it to write project-specific data (will be Sent/Received).
+            The plugin is responsible for checking <see cref="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,Paratext.PluginInterfaces.DataType)"/>
+            (for <see cref="F:Paratext.PluginInterfaces.DataType.PluginData"/>) to make sure the current user has permission to
+            write data for the project.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)"/>.</param>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <param name="writeData">A callback supplying a <see cref="T:System.IO.TextWriter"/> that the plugin
+            should use to write the data.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data, the lock does not cover the specified plugin
+            data, or the user does not have permission to write data for the project</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.DeletePluginData(Paratext.PluginInterfaces.IWriteLock,Paratext.PluginInterfaces.IPluginObject,System.String)">
+            <summary>
+            Removes project-specific data.
+            The plugin is responsible for checking <see cref="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,Paratext.PluginInterfaces.DataType)"/> to make sure the current user
+            has permission to write data for the project.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)"/>.</param>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data or the user does not have
+            permission to write data for the project</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.ConvertToUSFMString(System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IUSFMToken})">
+            <summary>
+            Gets the USFM equivalent of the specified tokens (with normalized whitespace and line
+            breaks). Format of USFM will be in the version returned by <see cref="P:Paratext.PluginInterfaces.IProject.USFMVersion"/>.
+            </summary>
+            <param name="tokens">The USFM tokens, which must be one of the three standard derived
+            types of <see cref="T:Paratext.PluginInterfaces.IUSFMToken"/>:
+            <list type="bullet">
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMMarkerToken"/></description></item>
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMTextToken"/></description></item>
+                <item><description><see cref="T:Paratext.PluginInterfaces.IUSFMAttributeToken"/></description></item>
+            </list>
+            </param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,Paratext.PluginInterfaces.DataType)">
+            <summary>
+            Checks whether the current user can edit the specified type of data using the given plugin.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="dataType">The type of data</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,System.Int32,System.Int32)">
+            <summary>
+            Checks whether the current user can edit a specified book
+            and chapter (optional) using the given plugin.
+            </summary>
+            <param name="obj">Any object owned by the plugin that can be used to uniquely identify the plugin</param>
+            <param name="bookNum">book or 0 for all books</param>
+            <param name="chapterNum">chapter or 0 for entire book/text</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProject.GetBiblicalTermRenderings(Paratext.PluginInterfaces.IBiblicalTerm,System.Boolean)">
+            <summary>
+            Gets an object representing the vernacular renderings from the project for the requested term.
+            </summary>
+            <param name="term">The term whose renderings are needed.</param>
+            <param name="guessIfNotRendered">If true and there are no (guessed or approved) renderings
+            Paratext will use the guessing logic to try to find some renderings. These guessed renderings
+            will not be added to the ones Paratext persists. This might take a while.</param>
+            <returns>If there is no rendering for the specified term a renderings object will still be returned.</returns>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IBookInfo">
+            <summary>
+            An object representing information about a book in a project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBookInfo.Number">
+            <summary>
+            The one-based book number based on the "standard" canonical order.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBookInfo.Code">
+            <summary>
+            The standard 3-letter book code
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IBookInfo.InProjectScope">
+            <summary>
+            Gets whether this book is defined as being part of the project scope
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IProjectLanguage">
+            <summary>
+            An object representing the language used by a project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectLanguage.WordMatchRegex">
+            <summary>
+            Gets a regular expression string that will match a whole word in the language.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectLanguage.StringComparer">
+            <summary>
+            Gets a string comparer that takes into consideration any custom sort order rules for this language.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectLanguage.QuotationMarkInfo">
+            <summary>
+            Information about the quotation mark system(s) used by the language.
+            Returns null if the quotation settings have not been set or are otherwise invalid (rare).
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IProjectNote">
+            <summary>
+            An object representing a project note
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.Anchor">
+            <summary>
+            A selection in the Scripture text representing the "anchor" location of the note.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.Comments">
+            <summary>
+            The comments that comprise the note
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.IsRead">
+            <summary>
+            Flag indicating whether all the comments of the note have been read by the current user.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.IsResolved">
+            <summary>
+            Flag indicating whether this note is resolved.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.AssignedUser">
+            <summary>
+            Present in a note when it has been assigned to a particular user.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IProjectNote.ReplyToUser">
+            <summary>
+            Present in a note when it has been assigned to reply-to a particular user.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProjectNote.AddNewComment(Paratext.PluginInterfaces.IWriteLock,System.Collections.Generic.IEnumerable{Paratext.PluginInterfaces.CommentParagraph},Paratext.PluginInterfaces.ILanguage,Paratext.PluginInterfaces.IUserInfo)">
+            <summary>
+            Adds a new comment to this note.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)"/></param>
+            <param name="contentParagraphs">One or more paragraphs of formatted text</param>
+            <param name="language">The default language used in the comment (except where specified explicitly
+            in a <see cref="T:Paratext.PluginInterfaces.FormattedString"/>).</param>
+            <param name="assignedUser">User (if any) to whom this comment is assigned (also changes the
+            <see cref="P:Paratext.PluginInterfaces.IProjectNote.AssignedUser"/> of this note).</param>
+            <returns>The newly added comment</returns>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IProjectNote.Resolve(Paratext.PluginInterfaces.IWriteLock)">
+            <summary>
+            Marks the note as resolved (by the current user.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.IProject.RequestWriteLock(Paratext.PluginInterfaces.IPluginObject,System.Action{Paratext.PluginInterfaces.IWriteLock},System.Int32,System.Int32)"/></param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IQuotationMarkInfo">
+            <summary>
+            Project quotation mark information
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkInfo.PrimaryLevels">
+            <summary>
+            List of levels defined for the primary quotation mark system.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkInfo.AlternateLevels">
+            <summary>
+            List of levels defined for the alternate quotation mark system.
+            </summary>
+            <remarks>Typically this will only contain a single level and is used for
+            a "dialogue" or "narrative" quote, often introduced by a dash.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkInfo.FirstLevelCloserClosesAllLevels">
+            <summary>
+            Gets whether the closer for the first level implicitly closes all open nested levels.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IQuotationMarkInfo.IsContinuerRequired(System.String,System.String)">
+            <summary>
+            Gets whether a quotation continuer is required in a particular context
+            </summary>
+            <param name="inParagraphStyle">The style tag of the paragraph in question
+            (i.e., where the continuer is potentially required)</param>
+            <param name="previousParagraphStyle">The style tag of the preceding paragraph</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IQuotationMarkLevel">
+            <summary>
+            An object representing a (possibly nested) level of quotation marks
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkLevel.Opener">
+            <summary>
+            The characters used to mark the start of a quotation
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkLevel.Closer">
+            <summary>
+            The characters used to mark the end of a quotation
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IQuotationMarkLevel.Continuer">
+            <summary>
+            The characters used to mark places where the quotation continues when crossing paragraphs
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ProjectType">
+            <summary>
+            Type of project
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.Standard">
+            <summary>A standard translation with no base project</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.BackTranslation">
+            <summary>A back translation of another translation</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.Daughter">
+            <summary>A translation based on a front translation</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.TransliterationManual">
+            <summary>A manual transliteration of a text</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.TransliterationWithEncoder">
+            <summary>An automated transliteration of a text</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.StudyBible">
+            <summary>A study Bible based on an original text</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.ConsultantNotes">
+            <summary>Collection of consultant notes</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.StudyBibleAdditions">
+            <summary>A study Bible additions project</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.Auxiliary">
+            <summary>A standard project that goes with a base project used for anything related to the project that 
+            doesn't fit into another derived type.</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.Xml">
+            <summary>A project stored in xml format</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.SourceLanguage">
+            <summary>A source language project</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.ProjectType.Dictionary">
+            <summary>A dictionary project</summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IReadOnlyProject">
+            <summary>
+            A Paratext project 
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.ID">
+            <summary>
+            Gets the unique ID of the project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.ShortName">
+            <summary>
+            Gets the short name of the project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.LongName">
+            <summary>
+            Gets the long name of the project
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.Language">
+            <summary>
+            Gets the language of the project.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.LanguageName">
+            <summary>
+            Gets the name of the language as associated with this project.
+            </summary>
+            <remarks>This may or may not match one of the known names associated with the
+            language identified by <see cref="P:Paratext.PluginInterfaces.ILanguage.Id"/></remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReadOnlyProject.Type">
+            <summary>
+            Gets the type of project
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.SeverityLevel">
+            <summary>
+            The severity level of a message
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SeverityLevel.Information">
+            <summary>
+            Message is for informational purposes
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SeverityLevel.Warning">
+            <summary>
+            Message is for potential problems
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.SeverityLevel.Error">
+            <summary>
+            Message is for errors
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IReferenceListItem">
+            <summary>
+            Object representing a list item in the <see cref="T:Paratext.PluginInterfaces.IReferenceListWindow"/>
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListItem.Message">
+            <summary>
+            An optional (localized) message (error, etc.) associated with this item. If not
+            <c>null</c> this is what will be displayed in the list window; otherwise, the
+            <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.SelectedText"/> will be displayed.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListItem.MessageId">
+            <summary>
+            An optional (NOT localized) unique ID associated with this item's message.
+            If not <c>null</c> this is what will be used to store information about denied
+            items; otherwise, the message itself will be used (which is less than ideal if
+            messages are ever localized).
+            </summary>
+            <remarks>If the <see cref="P:Paratext.PluginInterfaces.IReferenceListItem.Message"/> is not null and the <see cref="P:Paratext.PluginInterfaces.IReferenceListItem.Severity"/>
+            is not <see cref="F:Paratext.PluginInterfaces.SeverityLevel.Information"/> and the list allows for items to
+            be denied, it is strongly recommended that this property not return null.</remarks>
+            <remarks>To ensure that the message IDs are unique (cannot be confused with Paratext
+            built-in or other plugin message IDs), the class implementing this interface should
+            also implement the <see cref="T:Paratext.PluginInterfaces.IPluginObject"/> interface.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListItem.Severity">
+            <summary>
+            An indicator of the severity of the item.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ItemDoubleClickedHandler">
+            <summary>
+            Handler for handling an item in the list window being double-clicked by the user
+            </summary>
+            <param name="sender">The list window</param>
+            <param name="item">The item that was double-clicked by the user</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IReferenceListWindow">
+            <summary>
+            Object representing the (one and only) list of references.
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IReferenceListWindow.ListChanged">
+            <summary>
+            Raised when the list changes. 
+            </summary>
+            <seealso cref="P:Paratext.PluginInterfaces.IReferenceListWindow.DisplayedListItems"/>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IReferenceListWindow.SelectedItemChanged">
+            <summary>
+            Raised when the selected item(s) changes. 
+            </summary>
+            <seealso cref="P:Paratext.PluginInterfaces.IReferenceListWindow.DisplayedListItems"/>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IReferenceListWindow.ItemDoubleClicked">
+            <summary>
+            Raised when an item is double-clicked. 
+            </summary>
+            <seealso cref="P:Paratext.PluginInterfaces.IReferenceListWindow.DisplayedListItems"/>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListWindow.Project">
+            <summary>
+            The project associated with the current list of items, if any.
+            If the list window is not open, this returns null.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListWindow.DisplayedListItems">
+            <summary>
+            Gets the list of items currently displayed in the list window (as sorted and filtered).
+            If the list window is not open, this returns null.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListWindow.AllListItems">
+            <summary>
+            Gets the list of all items in the list window (unfiltered, sorted by reference).
+            If the list window is not open, this returns null.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IReferenceListWindow.SelectedItems">
+            <summary>
+            Gets all of the currently selected items
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IReferenceListWindow.IsItemDenied(Paratext.PluginInterfaces.IReferenceListItem)">
+            <summary>
+            Returns whether the specified item (i.e. error or warning) has been denied by the user.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IReferenceListWindow.Load(Paratext.PluginInterfaces.IProject,System.String,System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IReferenceListItem},System.Boolean,System.Action{Paratext.PluginInterfaces.IProgressInfo})">
+            <summary>
+            Shows the list window (only one for all of Paratext) if not already shown and populates
+            it with the given list of items.
+            </summary>
+            <param name="project">The project associated with the <paramref name="items"/>. Can be
+            null for a list of items merely representing Scripture references.</param>
+            <param name="description">The (localized) description to display at the head of the list
+            (following the project name, if any)</param>
+            <param name="items">The list of items. Can be an empty list. Paratext will sort this list
+            according to the current sort-order setting.</param>
+            <param name="allowDeny">A flag indicating whether the user should be allowed to "deny"
+            items in the list (typically <c>true</c> for checking results).</param>
+            <param name="rerun">An optional callback action invoked when the user clicks the Rerun
+            button in the list header. Typically the plugin should re-generate the list based on
+            the current data and call this method again with the updated list.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="items"/> is null</exception>
+            <remarks>If the rerun action is invoked and the user subsequently cancels it, the
+            plugin should note that and terminate the work of identifying new list items, but it
+            may still call <see cref="M:Paratext.PluginInterfaces.IReferenceListWindow.Load(Paratext.PluginInterfaces.IProject,System.String,System.Collections.Generic.IReadOnlyList{Paratext.PluginInterfaces.IReferenceListItem},System.Boolean,System.Action{Paratext.PluginInterfaces.IProgressInfo})"/> to reload the list with whatever items have been
+            found thus far.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IScriptureTextSelection">
+            <summary>
+            A selection in the Scripture text
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.VerseRefStart">
+            <summary>
+            The verse where the selection starts.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.VerseRefEnd">
+            <summary>
+            The verse where the selection ends.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.SelectedText">
+            <summary>
+            The selected text represented by this object. Can be an empty string (representing
+            an insertion point).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.Offset">
+            <summary>
+            The character offset (in the raw USFM data) starting from the point before the \v
+            (i.e., the slash is the 0th character).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.BeforeContext">
+            <summary>
+            The raw USFM text preceding the <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.SelectedText"/> (typically the entirety
+            of the verse represented by <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.VerseRefStart"/> up to <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.Offset"/>).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IScriptureTextSelection.AfterContext">
+            <summary>
+            The raw USFM text following the <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.SelectedText"/> (typically the remainder
+            of the verse represented by <see cref="P:Paratext.PluginInterfaces.IScriptureTextSelection.VerseRefEnd"/>).
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ISelection">
+            <summary>
+            A base interface implemented by <see cref="T:Paratext.PluginInterfaces.IScriptureTextSelection"/>
+            and <see cref="T:Paratext.PluginInterfaces.IReferenceListItem"/>
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUserInfo">
+            <summary>
+            An object representing information about a user
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserInfo.Name">
+            <summary>
+            Gets the registration name of the current user or an empty string if there is no registration information
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.UiLocaleChangedHandler">
+            <summary>
+            Handler for handling changes to the UI localization
+            </summary>
+            <param name="newLocale">The new locale of the UI</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUserSettings">
+            <summary>
+            An object containing various settings set by the current user
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.IUserSettings.UiLocaleChanged">
+            <summary>
+            Raised when the Paratext UI locale is changed.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.UiLocale">
+            <summary>
+            Gets the current UI locale in the standard ISO-639 format (e.g. "en" is English, "es" is Spanish, etc.)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.IsDragAndDropEnabled">
+            <summary>
+            Gets whether drag/drop of Scripture text is enabled
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.IsInternetAccessEnabled">
+            <summary>
+            Gets whether internet access is enabled
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.IsFirefoxHardwareAccelerationEnabled">
+            <summary>
+            Gets whether hardware acceleration is enabled for the Firefox control.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.IsSynchronizedScriptureReferencesEnabled">
+            <summary>
+            Gets whether synchronized reference sharing with other applications is enabled
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.ShowFullMenus">
+            <summary>
+            Gets whether full menus are enabled. This can give an indication to the
+            abilities of the current user (i.e. if this is disabled, maybe they're a
+            less-advanced user).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUserSettings.AutoSave">
+            <summary>
+            Gets whether automatic saving (e.g. when changing chapters) is enabled.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.MarkerType">
+            <summary>
+            The type of marker a <see cref="T:Paratext.PluginInterfaces.IUSFMMarkerToken"/> represents
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Book">
+            <summary>
+            A marker (always "id") whose <see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Data"/> specifies a
+            canonical or deuterocanonical book or other standard book supported by Paratext.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Chapter">
+            <summary>
+            A marker (always "c") whose <see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Data"/> specifies
+            a chapter number.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Verse">
+            <summary>
+            A marker (always "v") whose <see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Data"/> specifies
+            a verse number, verse bridge, or sub-verse segment.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Paragraph">
+            <summary>
+            A marker that is to be treated as the start of a paragraph or other line-breaking
+            division (such as a new line of poetry).
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Character">
+            <summary>
+            A marker that applies special formatting or significance to a series of characters
+            within a paragraph. (These can be nested within surrounding character styles.)
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Note">
+            <summary>
+            A footnote or cross-reference marker.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.End">
+            <summary>
+            A marker that indicates the end of a <see cref="F:Paratext.PluginInterfaces.MarkerType.Character"/> or <see cref="F:Paratext.PluginInterfaces.MarkerType.Note"/>.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Milestone">
+            <summary>
+            A marker that indicates a "milestone" corresponding to the start of a span of text.
+            Milestone type markup is required when a document has two or more structures that
+            interact in a non-hierarchical manner. Although not strictly required, when present
+            the "sid" attribute (<see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Attributes"/> and
+            <see cref="T:Paratext.PluginInterfaces.IUSFMAttributeToken"/>) can be used to unambiguously associate a
+            milestone start with its corresponding <see cref="F:Paratext.PluginInterfaces.MarkerType.MilestoneEnd"/>. The end may not
+            occur in the same paragraph as the start location.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.MilestoneEnd">
+            <summary>
+            A marker that indicates a "milestone" corresponding to the end of a span of text.
+            <see cref="F:Paratext.PluginInterfaces.MarkerType.Milestone"/>.
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.MarkerType.Unknown">
+            <summary>
+            A marker that is unexpected/undefined. Outside of the context of notes, these
+            will typically be treated as paragraph markers.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUSFMToken">
+            <summary>
+            A base interface implemented by <see cref="T:Paratext.PluginInterfaces.IUSFMMarkerToken"/>,
+            <see cref="T:Paratext.PluginInterfaces.IUSFMTextToken"/> and <see cref="T:Paratext.PluginInterfaces.IUSFMAttributeToken"/>
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.VerseRef">
+            <summary>
+            Current verse reference
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.VerseOffset">
+            <summary>
+            Character offset of start of token in verse
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsSpecial">
+            <summary>
+            True if the token is part of a special indivisible group 
+            of tokens (link, category, or chapter/verse alternate/publishable)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsFigure">
+            <summary>
+            True if the token is part of a figure.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsFootnoteOrCrossReference">
+            <summary>
+            True if the token is part of a footnote or cross reference
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsScripture">
+            <summary>
+            Determines if the token is in Scripture (includes chapter/verse numbers)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsMetadata">
+            <summary>
+            Determines if the token is metadata (as opposed to publishable material)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMToken.IsPublishableVernacular">
+            <summary>
+            Determines if the token is in publishable (not metadata) vernacular material
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUSFMMarkerToken">
+            <summary>
+            A token representing a Standard Format marker. Typically this will
+            be a marker defined in the current <a href="https://ubsicap.github.io/usfm/usfm3.0_fixes/index.html">
+            USFM standard</a>, though custom additions and <see cref="F:Paratext.PluginInterfaces.MarkerType.Unknown"/>
+            types are also possible.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Type">
+            <summary>
+            The type of marker.
+            </summary>
+            <remarks>This is to simplify processing of the tokens instead of having to
+            look at the <see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Marker"/> property.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Marker">
+            <summary>
+            Marker of the token (excluding the leading backslash)
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Attributes">
+            <summary>
+            Any attributes associated with this marker
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Data">
+            <summary>
+            Token data of token. null if not applicable.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMMarkerToken.EndMarker">
+            <summary>
+            End marker (excluding the leading backslash), null if not applicable
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUSFMTextToken">
+            <summary>
+            A token representing textual data. When occurring in a sequence of tokens,
+            this text can be understood to pertain to the current paragraph (if any) and
+            any open character style as indicated by the preceding opening - and not
+            subsequently closed - marker(s).
+            </summary>
+            <seealso cref="T:Paratext.PluginInterfaces.IUSFMMarkerToken"/>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMTextToken.Text">
+            <summary>
+            Text of the token.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUSFMAttributeToken">
+            <summary>
+            A token representing one or more attributes (<see cref="T:Paratext.PluginInterfaces.IUSFMAttribute"/>)
+            associated with a marker and/or its text. These attributes will always be the
+            same as the ones returned by <see cref="P:Paratext.PluginInterfaces.IUSFMMarkerToken.Attributes"/> for the
+            preceding marker token.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMAttributeToken.Attributes">
+            <summary>
+            The attributes associated with this token
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IUSFMAttribute">
+            <summary>
+            A name/value pair that specifies extra information about an occurrence
+            of a marker and/or the text associated with it. Some examples of some
+            markers defined in USFM that typically use attributes:
+            <a href="https://ubsicap.github.io/usfm/usfm3.0_fixes/characters/index.html#fig-fig">Figures</a>
+            <a href="https://ubsicap.github.io/usfm/usfm3.0_fixes/milestones/index.html">Milestones</a>
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMAttribute.Name">
+            <summary>
+            The name of the attribute
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMAttribute.Value">
+            <summary>
+            The value of the attribute
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IUSFMAttribute.Offset">
+            <summary>
+            TODO: Figure out what this is and if it's needed
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IVerseRef">
+            <summary>
+            An instance of a verse reference. Most often, this is a single verse, but it can
+            also represent a verse bridge (i.e., a range indicated using dash) or a list
+            (indicated using commas).
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.BookCode">
+            <summary>
+            The standard 3-letter book code
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.BookNum">
+            <summary>
+            The one-based book number based on the "standard" canonical order.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.ChapterNum">
+            <summary>
+            The one-based chapter number.
+            </summary>
+            <remarks>A verse reference cannot represent a range that crosses a chapter break.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.VerseNum">
+            <summary>
+            The verse number. If <see cref="P:Paratext.PluginInterfaces.IVerseRef.RepresentsMultipleVerses"/> is true, this is the
+            number of the first verse. 
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.BBBCCCVVV">
+            <summary>
+            An integer representing the first verse of this reference, with 3 digits for the book,
+            3 digits for the chapter, and 3 digits for the verse.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.Versification">
+            <summary>
+            The versification system to which this reference pertains.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.RepresentsMultipleVerses">
+            <summary>
+            Gets whether this reference is a bridge (range, specified with a dash)
+            or list (specified with a comma) of verses.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVerseRef.AllVerses">
+            <summary>
+            If <see cref="P:Paratext.PluginInterfaces.IVerseRef.RepresentsMultipleVerses"/> is true, this gets an individual
+            <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> object for each verse number represented. Otherwise,
+            it gets a single <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> object which is identical to this
+            object. 
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.ChangeVersification(Paratext.PluginInterfaces.IVersification)">
+            <summary>
+            Gets a new <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> object representing this verse
+            reference mapped into the specified new versification.
+            </summary>
+            <remarks>In the (unusual) case where a verse reference represents multiple
+            verses and these verses are not all in the same chapter when mapped to the
+            new versification, the object returned will be undefined. To be safe, check
+            <see cref="P:Paratext.PluginInterfaces.IVerseRef.RepresentsMultipleVerses"/> and call this method individually on
+            each reference returned by <see cref="P:Paratext.PluginInterfaces.IVerseRef.AllVerses"/>.</remarks>
+            <remarks>Plugins typically will not need to implement own version of
+            <see cref="T:Paratext.PluginInterfaces.IVersification"/> and are generally discouraged from doing so.
+            </remarks>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException"><paramref name="newVersification"/>
+            is <c>null</c> or is an an implementation of <see cref="T:Paratext.PluginInterfaces.IVersification"/> that
+            did not come from Paratext whose <see cref="P:Paratext.PluginInterfaces.IVersification.IsCustomized"/>
+            property returns <c>true</c>.</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetPreviousVerse(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the previous verse as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no previous verse.
+            </summary>
+            <remarks>If this verse is at 1:1, this returns a reference representing the book introduction
+            (i.e., any material before v. 1 of chapter 1) if you are at verse 1:1</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetNextVerse(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the next verse as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no next verse.
+            </summary>
+            <remarks>If this verse is at the end of a book, this returns a reference representing the book
+            introduction (1:0) of the following book.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetPreviousChapter(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the previous chapter as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no previous chapter.
+            </summary>
+            <remarks>Verse number will be verse one.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetNextChapter(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the next chapter as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no next chapter.
+            </summary>
+            <remarks>Verse number will be verse one unless it moves to the following book - in which case it
+            will be zero.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetPreviousBook(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the previous book as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no previous book.
+            </summary>
+            <remarks>Chapter and verse number will both be one.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVerseRef.GetNextBook(Paratext.PluginInterfaces.IProject)">
+            <summary>
+            Gets the next book as defined in the versification of this verse reference skipping over any
+            books not available in the specified project. Returns null if there is no next book.
+            </summary>
+            <remarks>Chapter number will be one and verse number will be zero.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.StandardScrVersType">
+            <summary>
+            Types of standard (base) versifications
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.Unknown">
+            <summary>Unknown</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.Original">
+            <summary>Original</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.Septuagint">
+            <summary>Septuagint</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.Vulgate">
+            <summary>Vulgate</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.English">
+            <summary>English</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.RussianProtestant">
+            <summary>Russian Protestant</summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.StandardScrVersType.RussianOrthodox">
+            <summary>Russian Orthodox</summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IVersification">
+            <summary>
+            A system representing how chapter and verse numbers are assigned to the
+            content of a Scripture book.
+            </summary>
+            <remarks>Plugins typically will not need to implement own version of
+            <see cref="T:Paratext.PluginInterfaces.IVersification"/> and are generally discouraged from doing so. If
+            they do, and a customized versification is passed as the argument to this
+            method, Paratext will return a new object having this versification, but the
+            mapping might not be performed reliably.</remarks>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVersification.Type">
+            <summary>
+            The standard system used as the basis of this versification. <seealso cref="P:Paratext.PluginInterfaces.IVersification.IsCustomized"/>
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.IVersification.IsCustomized">
+            <summary>
+            Gets whether this versification is customized in any way that diverges from the
+            standard system.
+            </summary>
+            <remarks>If the <see cref="P:Paratext.PluginInterfaces.IVersification.Type"/> is <see cref="F:Paratext.PluginInterfaces.StandardScrVersType.Unknown"/>
+            a versification is implicitly considered to be customized.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.GetLastVerse(System.Int32,System.Int32)">
+            <summary>
+            Gets the last verse for the specified book and chapter
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.GetLastChapter(System.Int32)">
+            <summary>
+            Gets the last chapter for the specified book
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.CreateReference(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> using this versification.
+            </summary>
+            <param name="bookNum">The one-based book number based on the "standard" canonical order.</param>
+            <param name="chapterNum">The one-based chapter number.</param>
+            <param name="verseNum">The verse number.</param>
+            <returns>The requested verse reference or null if a verse or chapter number is out of range.</returns>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.CreateReference(System.String)">
+            <summary>
+            Creates a new <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> from the specified standard reference format string.
+            </summary>
+            <param name="refStr">The reference format string in the standard reference format (<c>bookCode chapter:verse</c>).
+            Bookcode is the standard 3-letter book code. Verse can contain commas (to represent a list of verses),
+            dashes (to represent a range of verses), and/or letters (to represent partial verses).</param>
+            <returns>The requested verse reference or null if it failed to parse or a verse or chapter number is out of range.</returns>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.ChangeVersification(Paratext.PluginInterfaces.IVerseRef)">
+            <summary>
+            Gets a new <see cref="T:Paratext.PluginInterfaces.IVerseRef"/> object representing the given verse
+            reference mapped into this versification. <seealso cref="M:Paratext.PluginInterfaces.IVerseRef.ChangeVersification(Paratext.PluginInterfaces.IVersification)"/>
+            </summary>
+            <remarks>In the (unusual) case where a verse reference represents multiple
+            verses and these verses are not all in the same chapter when mapped to this
+            versification, the object returned will be undefined. To be safe, check
+            <see cref="P:Paratext.PluginInterfaces.IVerseRef.RepresentsMultipleVerses"/> and call this method individually for
+            each reference returned by <see cref="P:Paratext.PluginInterfaces.IVerseRef.AllVerses"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IVersification.IsExcluded(System.Int32)">
+            <summary>
+            Gets whether the specified verse is excluded in the versification.
+            </summary>
+            <param name="bbbcccvvv">An integer representing a verse reference, with 3 digits for
+            the book, 3 digits for the chapter, and 3 digits for the verse.</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.IWriteLock">
+            <summary>
+            A lock ensuring the plugins exclusive ability to write data.
+            </summary>
+            <remarks>When disposed, the lock will be released. If any changes were
+            made using this lock for which there are pending notifications, they
+            will be made at that time.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications">
+            <summary>
+            Notify that a "unit of work" has been completed so that Paratext
+            will send out notifications for any data that has changed. This
+            normally allows the lock to be retained (unless another object
+            requests the lock in response to notifications).
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin">
+            <summary>
+            Base interface for all Paratext plugins
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.Name">
+            <summary>
+            Gets the name of the plugin.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.Version">
+            <summary>
+            The version of the plugin
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.VersionString">
+            <summary>
+            The version of the plugin suitable for showing to the user
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.Publisher">
+            <summary>
+            Gets the name of the plugin's publisher.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.GetDescription(System.String)">
+            <summary>
+            Gets the description of the plugin 
+            </summary>
+            <param name="locale">ISO 639-3 language code with optional RFC 5646 subtags to identify the language
+            in which term plugin description is requested. If a plugin is not localized or does not have a
+            description in the requested locale, it can fall back to English (en).</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IParatextPlugin.GetMerger(Paratext.PluginInterfaces.IPluginHost,System.String)">
+            <summary>
+            Gets an object that can be used to merge the data identified.
+            </summary>
+            <param name="host">The plugin host</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <remarks>For a standard XML-based merger that uses <see cref="T:Paratext.PluginInterfaces.XMLDataMergeInfo"/>, use
+            <see cref="M:Paratext.PluginInterfaces.IPluginHost.GetXmlMerger(Paratext.PluginInterfaces.XMLDataMergeInfo)"/>.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess">
+            <summary>
+            
+            </summary>
+            <remarks>This interface is in ParatextInternal deliberately as we do not want normal
+            plugin developers to be aware of accessing files at the root level of the project.
+            This is primarily used for Xml Resource Authoring.
+            </remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.RequestWriteLock(System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)">
+            <summary>
+            Requests a write lock for the specified plugin data at the root level of the project.
+            </summary>
+            <param name="releaseRequested">Delegate to call when some other task requests a lock that
+            overlaps with the lock granted as a result of this request. Plugin should normally release the lock
+            in response to this.</param>
+            <param name="pluginDataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The requested lock or null if not available.</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <remarks>An appropriate lock should be obtained before calling <see cref="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.PutPluginData(Paratext.PluginInterfaces.IWriteLock,System.String,System.Action{System.IO.TextWriter})"/>.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.GetPluginData(System.String)">
+            <summary>
+            Gets a text reader that the plugin can use to read project-specific data at the root level of the project.
+            The plugin is responsible for closing the reader.
+            </summary>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <returns>The reader containing the data, or null if it did not exist</returns>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.PutPluginData(Paratext.PluginInterfaces.IWriteLock,System.String,System.Action{System.IO.TextWriter})">
+            <summary>
+            Requests Paratext to obtain a text writer and call back to the plugin so it can use
+            it to write project-specific data at the root level of the project (will be Sent/Received).
+            The plugin is responsible for checking <see cref="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,Paratext.PluginInterfaces.DataType)"/>
+            (for <see cref="F:Paratext.PluginInterfaces.DataType.PluginData"/>) to make sure the current user has permission to
+            write data for the project.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.RequestWriteLock(System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)"/>.</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <param name="writeData">A callback supplying a <see cref="T:System.IO.TextWriter"/> that the plugin
+            should use to write the data.</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data, the lock does not cover the specified plugin
+            data, or the user does not have permission to write data for the project</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.DeletePluginData(Paratext.PluginInterfaces.IWriteLock,System.String)">
+            <summary>
+            Removes project-specific data at the root level of the project.
+            The plugin is responsible for checking <see cref="M:Paratext.PluginInterfaces.IProject.CanEdit(Paratext.PluginInterfaces.IPluginObject,Paratext.PluginInterfaces.DataType)"/> to make sure the current user
+            has permission to write data for the project.
+            </summary>
+            <param name="writeLock">The write lock previously obtained by a call to
+            <see cref="M:Paratext.PluginInterfaces.ParatextInternal.IProjectRootAccess.RequestWriteLock(System.Action{Paratext.PluginInterfaces.IWriteLock},System.String)"/>.</param>
+            <param name="dataIdentifier">string identifying the data (e.g. a filename)</param>
+            <exception cref="T:Paratext.PluginInterfaces.ParatextPluginException">Plugin gave invalid data or the user does not have
+            permission to write data for the project</exception>
+            <exception cref="T:System.IO.IOException">If something went wrong accessing the file on disk</exception>
+            <remarks>The caller is responsible for disposing the lock if so desired. Notifications will be
+            sent only when the lock is disposed or when <see cref="M:Paratext.PluginInterfaces.IWriteLock.SendNotifications"/> is called.</remarks>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1">
+            <summary>
+            Base class for plugin menu entries
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.#ctor(System.String,System.Action{`0,Paratext.PluginInterfaces.IParatextChildState},Paratext.PluginInterfaces.PluginMenuLocation,System.String,Paratext.PluginInterfaces.CustomMenuLocation)">
+            <summary>
+            Creates a new plugin menu entry with the specified parameters
+            </summary>
+            <param name="defaultText"></param>
+            <param name="clicked">The action to invoke when the menu item is clicked. The child state is the
+            state of the active child window at the time the menu item is clicked.</param>
+            <param name="location">A value that specifies a "standard" location where plugins might typically
+            go in the host application's menu structure.</param>
+            <param name="imagePath">The file path to an image to show for the menu. Path can be relative to the plugin folder.</param>
+            <param name="customLocation">If specified, indicates a custom location in the menu hierarchy (of
+            either the main window menu or a child window menu). If not specified or the path does not resolve to a
+            valid menu location, the <paramref name="location"/> will be used as a fallback. Custom locations are not supported
+            in context menus.</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.Location">
+            <summary>
+            A value that specifies a "standard" location where plugins might typically
+            go in the host application's menu structure.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.CustomLocation">
+            <summary>
+            A custom location to specify a non-standard location in the menu hierarchy.
+            If this is not specified or its <see cref="P:Paratext.PluginInterfaces.CustomMenuLocation.InsertAfterMenuHierarchy"/> path does
+            not resolve to a valid menu location, the <see cref="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.Location"/> will be used as a fallback.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntry`1.Clicked">
+            <summary>
+            The action to invoke when the menu item is clicked. The child state is the
+            state of the active child window at the time the menu item is clicked.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextInternal.LocalizeTextHandler">
+            <summary>
+            Handler for handling requests for menu text in a particular locale.
+            </summary>
+            <param name="defaultText">The default text for the menu item</param>
+            <param name="locale">The requested locale</param>
+            <returns>The translated text in the given locale</returns>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntryBase">
+            <summary>
+            Base class for plugin menu entries
+            </summary>
+        </member>
+        <member name="E:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntryBase.LocalizedTextNeeded">
+            <summary>
+            Fired when localized text is needed in a specific locale
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntryBase.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="defaultText"></param>
+            <param name="imagePath">The file path to an image to show for the menu. Path can be relative to the plugin folder.</param>\
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntryBase.GetText(System.String)">
+            <summary>
+            Gets the (localized) text of the menu item.
+            </summary>
+            <param name="locale">ISO 639-3 language code with optional RFC 5646 subtags to identify the language
+            in which term check name is requested. If a plugin is not localized or does not have a name in the
+            requested locale, it falls back to the <c>defaultText</c> specified in the constructor.</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.ParatextInternal.PluginMenuEntryBase.ImagePath">
+            <summary>
+            The file path to an image to show for the menu. Path can be relative to the plugin folder.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.ParatextPluginException">
+            <summary>
+            Exception thrown when Paratext detects an error condition as a result of a call from a plugin.
+            Inner exception will contain the actual error.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.ParatextPluginException.#ctor(System.Exception)">
+            <summary>
+            Creates a new Paratext plugin exception
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.PluginAnnotationMenuEntry">
+            <summary>
+            Represents a menu item that is to be inserted into an existing Paratext child window.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.PluginAnnotationMenuEntry.#ctor(System.String,System.Func{Paratext.PluginInterfaces.IProject,Paratext.PluginInterfaces.IPluginAnnotationSource},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="defaultText"></param>
+            <param name="getSource">The function to invoke to get the annotation source for a particular project.</param>
+            <param name="imagePath">The file path to an image to show for the menu. Path can be relative to the plugin folder.</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.PluginAnnotationMenuEntry.GetSource">
+            <summary>
+            The function to invoke to get the annotation source for a particular project.
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.PluginMenuLocation">
+            <summary>
+            A "standard" location where a menu item should appear
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.MainDefault">
+            <summary>
+            Default location on the Paratext menu of the Paratext main window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ParatextAdvanced">
+            <summary>
+            Default location on the Paratext > Advanced menu of the Paratext main window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.Help">
+            <summary>
+            Default location on the Paratext > Help menu of the Paratext main window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextDefault">
+            <summary>
+            Default location on a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextProject">
+            <summary>
+            Default location on the Project menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextProjectExportAndPrint">
+            <summary>
+            Default location in the export/print section of the Project menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextProjectAdvanced">
+            <summary>
+            Default location on the Project > Advanced menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextEdit">
+            <summary>
+            Default location on the Edit menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextInsert">
+            <summary>
+            Default location on the Insert menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextTools">
+            <summary>
+            Default location on the Tools menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextToolsChecks">
+            <summary>
+            Default location in the checking section of the Tools menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ScrTextContextMenuDefault">
+            <summary>
+            Default location on the context menu of a Scripture text child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.ListDefault">
+            <summary>
+            Default location on a list child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.NotesListDefault">
+            <summary>
+            Default location on a notes list child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.BiblicalTermsToolDefault">
+            <summary>
+            Default location on a Biblical Terms tool child window
+            </summary>
+        </member>
+        <member name="F:Paratext.PluginInterfaces.PluginMenuLocation.BiblicalTermsListDefault">
+            <summary>
+            Default location on a Biblical Terms Renderings child window
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.PluginMenuEntry">
+            <summary>
+            Represents a menu item that is to be inserted into an existing Paratext child window.
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.PluginMenuEntry.#ctor(System.String,System.Action{Paratext.PluginInterfaces.IPluginHost,Paratext.PluginInterfaces.IParatextChildState},Paratext.PluginInterfaces.PluginMenuLocation,System.String,Paratext.PluginInterfaces.CustomMenuLocation)">
+            <summary>
+            
+            </summary>
+            <param name="defaultText"></param>
+            <param name="clicked">The action to invoke when the menu item is clicked. The child state is the
+            state of the active child window at the time the menu item is clicked.</param>
+            <param name="location">A value that specifies a "standard" location where plugins might typically
+            go in the host application's menu structure.</param>
+            <param name="imagePath">The file path to an image to show for the menu. Path can be relative to the plugin folder.</param>
+            <param name="customLocation">If specified, indicates a custom location in the menu hierarchy (of
+            either the main window menu or a child window menu). If not specified or the path does not resolve to a
+            valid menu location, the <paramref name="location"/> will be used as a fallback. Custom locations are not supported
+            in context menus.</param>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.XMLDataMergeInfo">
+            <summary>
+            Represents custom merge information for an XML file
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.XMLDataMergeInfo.#ctor(System.Boolean,Paratext.PluginInterfaces.XMLListKeyDefinition[])">
+            <summary>
+            
+            </summary>
+            <param name="requiresStrictMergeOrder">Indicates whether or not to require lists to be in a
+            certain order or otherwise be considered a change.</param>
+            <param name="mergeLevels">The merge information for each list-level in the file</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.XMLDataMergeInfo.RequiresStrictMergeOrder">
+            <summary>
+            Indicates whether or not to require lists to be in a certain order or otherwise be considered a change.
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.XMLDataMergeInfo.MergeLevels">
+            <summary>
+            The merge information for each list-level in the file
+            </summary>
+        </member>
+        <member name="T:Paratext.PluginInterfaces.XMLListKeyDefinition">
+            <summary>
+            The information for defining a list-level in an XML file
+            </summary>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.XMLListKeyDefinition.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="root">XPath expression which matches the root element of a list</param>
+            <param name="listItemKeyExpression">XPath expression which returns the primary key of list elements
+            which uniquely identifies child elements to be merged.</param>
+        </member>
+        <member name="M:Paratext.PluginInterfaces.XMLListKeyDefinition.#ctor(System.Xml.XPath.XPathExpression,System.Xml.XPath.XPathExpression)">
+            <summary>
+            
+            </summary>
+            <param name="root">XPath expression which matches the root element of a list</param>
+            <param name="listItemKeyExpression">XPath expression which returns the primary key of list elements
+            which uniquely identifies child elements to be merged.</param>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.XMLListKeyDefinition.Root">
+            <summary>
+            XPath expression which matches root element of a list
+            </summary>
+        </member>
+        <member name="P:Paratext.PluginInterfaces.XMLListKeyDefinition.ListItemKeyExpression">
+            <summary>
+            XPath expression which returns the primary key of list elements which uniquely 
+            identifies child elements to be merged.
+            </summary>
+        </member>
+    </members>
+</doc>

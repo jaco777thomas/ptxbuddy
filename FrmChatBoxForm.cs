@@ -291,6 +291,9 @@ namespace Ptxbuddy
             typingIndicatorPanel.Size = new Size(120, 30);
             typingIndicatorPanel.Visible = false;
 
+            typingIndicatorPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+
+
             lblTyping = new Label();
             lblTyping.Text = "AI is typing";
             lblTyping.Location = new Point(10, 5);
@@ -299,7 +302,11 @@ namespace Ptxbuddy
 
             // Add to chat area
             chatArea.Controls.Add(typingIndicatorPanel);
+
+            typingIndicatorPanel.Location = new Point(0, chatArea.Height - typingIndicatorPanel.Height);
         }
+
+
         
         private void InitializeTimer()
         {
@@ -869,11 +876,14 @@ namespace Ptxbuddy
                 typingTimer.Start();
                 UpdateTypingIndicatorPosition();
 
-                string webhookUrl = "https://ptxbuddy.app.n8n.cloud/webhook/ptxbuddy"; 
-               // string webhookUrl = "https://jacob777thomas.app.n8n.cloud/webhook/d75282e6-cc2e-47af-9a78-404f152c912a";
+                //string webhookUrl = "https://ptxbuddy.app.n8n.cloud/webhook/ptxbuddy";
+                // string webhookUrl = "https://jacob777thomas.app.n8n.cloud/webhook/d75282e6-cc2e-47af-9a78-404f152c912a";
 
-                string apiKey = "pbuddy4P9.4"; 
-                string headerName = "ptxbuddy";
+                string webhookUrl = "https://jacob777thomas.app.n8n.cloud/webhook/Mywebhook";
+
+
+                string apiKey = "pbuddy4P9.4";
+                string headerName = "MyNewHeader";
 
                 string queryText = txtPrompt.Text;  
                 string sys_prompt = messageLabel.Text;
@@ -887,8 +897,9 @@ namespace Ptxbuddy
                     query = queryText,
                     txt = queryText,
                     in_language = "Malayalam",
-                    out_language = "English"
-                   
+                    out_language = "English",
+                    Sys_Id = "abcd"
+                    
                 };
 
                 string jsonContent = JsonConvert.SerializeObject(requestData);

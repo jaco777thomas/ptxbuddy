@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SubsystemInterfaces</name>
+    </assembly>
+    <members>
+        <member name="E:Paratext.SubsystemInterfaces.IHelpManager.HelpItemOpened">
+            <summary>
+            Fired when a help item is expanded
+            </summary>
+        </member>
+        <member name="E:Paratext.SubsystemInterfaces.IHelpManager.HelpSearched">
+            <summary>
+            Fired when a help item is expanded
+            </summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.HelpItemOpenedEventArgs.Id">
+            <summary>
+            Id of help item
+            </summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.HelpSearchedEventArgs.SearchString">
+            <summary>
+            String that was searched for
+            </summary>
+        </member>
+        <member name="T:Paratext.SubsystemInterfaces.ProgressViewType">
+            <summary>
+            Views which the user may select.
+            </summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.AllTasks">
+            <summary>View all tasks for all users for a selected book.</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.MyTasks">
+            <summary>View only tasks assigned to the current user and on which they should be working.</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.StagesTable">
+            <summary>View/set task status on all stages for one or more books</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.TasksTable">
+            <summary>View/set status on all tasks for one or more books</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.LineChart">
+            <summary>View progress over time in a graph for one or more books or stages</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.BookBarChart">
+            <summary>View overall progress for the books in a progress plan</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.BookStageBarChart">
+            <summary>View overall progress for the book/stages in a progress plan</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ProgressViewType.UserDefault">
+            <summary>Place holder to so either the most recent view or the default view will be used</summary>
+        </member>
+        <member name="F:Paratext.SubsystemInterfaces.ScrollGroup.Invisible">
+            <summary>Not selectable by the user. Used to hide the icon in the mega-menu</summary>
+        </member>
+    </members>
+</doc>
